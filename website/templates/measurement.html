@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Measurements{% endblock %}
+
+{% block content %} 
+
+<div>
+  <h2>Notes</h2>
+  <ul>
+    <li>All body measurements should be in centimeters</li>
+    <li>Only one side of the body should be measured for all the measurements</li>
+  </ul>
+</div>
+<form method="post" id="measurements">
+    <div class="mb-3">
+      <label for="weight" class="form-label">Weight</label>
+      <input type="text" class="form-control" id="email" aria-describedby="weightHelp" name="weight">
+      <div id="weightHelp" class="form-text">Enter Weight in kilograms</div>
+    </div>
+    <div class="mb-3">
+      <label for="shoulder" class="form-label">Shoulder</label>
+      <input type="text" class="form-control" id="shoulder" name="shoulder">
+    </div>
+    <div class="mb-3">
+      <label for="chest" class="form-label">Chest</label>
+      <input type="text" class="form-control" id="chest" name="chest">
+    </div>
+    <div class="mb-3">
+      <label for="arm" class="form-label">Arm</label>
+      <input type="text" class="form-control" id="arm" aria-describedby="armHelp" name="arm">
+      <div id="armHelp" class="form-text">Measure while arm is flexed</div>
+    </div>
+    <div class="mb-3">
+      <label for="forearm" class="form-label">Forearm</label>
+      <input type="text" class="form-control" id="forearm" name="forearm">
+    </div>
+    <div class="mb-3">
+      <label for="waist" class="form-label">Waist</label>
+      <input type="text" class="form-control" id="waist" name="waist">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Thigh</label>
+      <input type="text" class="form-control" id="leg" aria-describedby="legHelp" name="leg">
+      <div id="legHelp" class="form-text">Measure half way up the thigh</div>
+    </div>
+    <div class="mb-3">
+      <label for="calf" class="form-label">Calf</label>
+      <input type="text" class="form-control" id="calf" aria-describedby="calfHelp" name="calf">
+      <div id="calfHelp" class="form-text">Measure half way up the calf</div>
+    </div>
+    <button type="submit" id="submit_measurements" class="btn btn-dark">Submit</button>
+</form>
+
+{% endblock %}

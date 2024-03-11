@@ -1,5 +1,22 @@
+.nav-item {
+    font-size: 1.2rem;
+}
 
+#measurements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 0.5rem;
+}
 
+#submit_measurements{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: 40%;
+    justify-self: center;
+    margin: 0.5rem;
+}
 
 .link-dark {
     text-decoration: none;
