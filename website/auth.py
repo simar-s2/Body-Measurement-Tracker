@@ -16,7 +16,7 @@ def validate_password(p):
     has_upper = False
     has_digit = False
     has_symbol = False
-    symbols = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+    symbols = r"!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
     # For loop to loop through characters
     for character in p:
         # If there is a lower character
@@ -39,7 +39,6 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        print(f'{email} {password}')
 
         if not email or not password:
             flash('Please fill in all the fields')
@@ -65,7 +64,7 @@ def sign_up():
         email = request.form.get("email")
         password = request.form.get("password")
         confirm = request.form.get("confirm")
-
+        
         if not email or not password or not confirm:
             flash('Please fill in all the fields')
         elif not validate_password(password):
@@ -81,7 +80,8 @@ def sign_up():
         new_user = User(email=email, password=generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
-        login_user(user, remember=True)
+
+        login_user(new_user, remember=True)
         flash('Account Created!')
         return redirect('/')
     else:

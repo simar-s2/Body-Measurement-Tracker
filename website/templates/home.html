@@ -4,6 +4,25 @@
 
 {% block content %} 
 
-This is the home page 
+    <h1 class="text-center">Welcome!</h1>
+    
+    <!-- Data selection dropdown menu -->
+    <form action="/" method="GET" class="">
+        <div class="mb-3">
+            <label for="data-selection" class="form-label">Select Trend:</label>
+            <select id="data-selection" name="data" class="form-select">
+                <option value="weight" {% if 'weight' == selected_data %} selected {% endif %}>Weight</option>
+                <option value="shoulder" {% if 'shoulder' == selected_data %} selected {% endif %}>Shoulder</option>
+                <option value="chest" {% if 'chest' == selected_data %} selected {% endif %}>Chest</option>
+                <option value="arm" {% if 'arm' == selected_data %} selected {% endif %}>Arm</option>
+                <option value="waist" {% if 'waist' == selected_data %} selected {% endif %}>Waist</option>
+                <option value="leg" {% if 'leg' == selected_data %} selected {% endif %}>Leg</option>
+            </select>
+        </div>
+            <input type="submit" value="Submit" class="btn btn-dark mt-2">
+    </form>
+    
+    <!-- Render the chart within a div -->
+    <div id="chart" class="mb-3">{{ chart_html | safe }}</div>
 
 {% endblock %}

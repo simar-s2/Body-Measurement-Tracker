@@ -25,3 +25,31 @@
 .link-dark:hover {
     text-decoration: underline;
 }
+
+/* body {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: hsl(0, 0%, 97%);
+    color: #333;
+}
+
+h1, h2 {
+    color: #222;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+} */
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    max-width: 800px;
+    max-height: 400px;
+}
