@@ -9,10 +9,8 @@ class Measurement(db.Model):
     shoulder = db.Column(db.REAL)
     chest = db.Column(db.REAL)
     arm = db.Column(db.REAL)
-    forearm = db.Column(db.REAL)
     waist = db.Column(db.REAL)
     leg = db.Column(db.REAL)
-    calf = db.Column(db.REAL)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
 class User(db.Model, UserMixin):
