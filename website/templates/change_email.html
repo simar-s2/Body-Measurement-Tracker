@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Settings: Change Email{% endblock %}
+
+{% block content %} 
+
+<form method="post">
+    <div class="mb-3">
+      <label for="email" class="form-label">New email address</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <button type="submit" class="btn btn-primary">Change Email</button>
+</form>
+
+{% endblock %}

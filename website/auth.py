@@ -97,3 +97,58 @@ def logout():
     logout_user()
     flash('Logged out Successfully!', 'success')
     return redirect('/login')
+
+@auth.route('/settings')
+@login_required
+def settings():
+    return render_template('settings.html', user=current_user)
+
+@auth.route('/change_email', methods=["GET", "POST"])
+@login_required
+def change_email():
+    if request.method == "POST":
+        email = request.form.get('email')
+        existing_user = User.query.filter_by(email=email).first()
+        print(existing_user)
+        if not email:
+            flash('Please enter an email!', 'warning')
+        if existing_user != None:
+            flash("Email Address is in use!")
+            return redirect('/change_email')
+        
+        user = User.query.filter_by(id=current_user.id).first()
+        user.email = email
+        db.session.commit()
+        flash(f"Email has been updated to {email}!", "success")
+
+        return redirect('/settings')
+    else:
+        return render_template("change_email.html", user=current_user)
+
+@auth.route('/change_password', methods=["GET", "POST"])
+@login_required
+def change_password():
+    if request.method == "POST":
+        password = request.form.get('password')
+        confirm = request.form.get('confirm')
+
+        if not password or not confirm:
+            flash('Please fill in all the fields!', 'warning')
+            return redirect('/change_password')
+        elif password != confirm:
+            flash('Passwords do not match', 'warning')
+            return redirect('/change_password')
+        elif not validate_password(password):
+            flash('Please enter a valid password!', 'warning')
+            return redirect('/change_password')
+        
+        user = User.query.filter_by(id=current_user.id).first()
+        user.password = generate_password_hash(password)
+        db.session.commit()
+        flash("Password has been updated!", "success")
+
+        return redirect('/settings')
+    else:
+        return render_template("change_password.html", user=current_user)
+
+

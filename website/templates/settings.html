@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %} 
+
+<h2 class="mb-3">Personal Details:</h2>
+<div class="list-group list-group-flush">
+    <a href="/change_email" class="list-group-item list-group-item-action">Email: {{ user.email }}</a>
+    <a href="/change_password" class="list-group-item list-group-item-action">Change Password</a>
+    <a href="/delete_account" class="list-group-item list-group-item-action">Delete Account</a>
+</div>
+
+{% endblock %}
