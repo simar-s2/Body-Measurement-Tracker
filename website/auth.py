@@ -34,6 +34,7 @@ def validate_password(p):
     # Returning true if all conditions are met else false
     return has_lower and has_upper and has_digit and has_symbol
 
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
@@ -58,6 +59,7 @@ def login():
         return redirect('/login')
     else:
         return render_template('login.html', user=current_user)
+
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
@@ -91,6 +93,7 @@ def sign_up():
     else:
         return render_template('sign-up.html', user=current_user)
 
+
 @auth.route('/logout')
 @login_required
 def logout():
@@ -98,10 +101,20 @@ def logout():
     flash('Logged out Successfully!', 'success')
     return redirect('/login')
 
-@auth.route('/settings')
+
+@auth.route('/settings', methods=["GET", "POST"])
 @login_required
 def settings():
-    return render_template('settings.html', user=current_user)
+    if request.method == 'POST':
+        user = User.query.filter_by(id=current_user.id).first()
+        db.session.delete(user)
+        db.session.commit()
+        flash('Account has been successfully deleted, we are sad to see you go!', 'success')
+        return redirect('/login')
+
+    else:
+        return render_template('settings.html', user=current_user)
+
 
 @auth.route('/change_email', methods=["GET", "POST"])
 @login_required
@@ -124,6 +137,7 @@ def change_email():
         return redirect('/settings')
     else:
         return render_template("change_email.html", user=current_user)
+
 
 @auth.route('/change_password', methods=["GET", "POST"])
 @login_required
@@ -150,5 +164,3 @@ def change_password():
         return redirect('/settings')
     else:
         return render_template("change_password.html", user=current_user)
-
-
