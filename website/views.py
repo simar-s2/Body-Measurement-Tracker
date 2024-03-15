@@ -32,21 +32,23 @@ def home():
     layout = go.Layout(title=title, xaxis=dict(title='Date'), yaxis=dict(title=y_label))
     fig = go.Figure(data=[trace], layout=layout)
 
-    fig.update_layout(plot_bgcolor='white')
-    fig.update_traces(line_color='red')
+    fig.update_layout(plot_bgcolor='#B9D9EB', paper_bgcolor='rgba(0,0,0,0)')
+    fig.update_traces(line_color='#f3172d', line={'width': 1.5})
 
     fig.update_xaxes(
         mirror=True,
         ticks='outside',
         showline=True,
-        gridcolor='lightgrey'
+        linecolor='black',
+        gridcolor='grey'
     )
 
     fig.update_yaxes(
         mirror=True,
         ticks='outside',
         showline=True,
-        gridcolor='lightgrey'
+        linecolor='black',
+        gridcolor='grey'
     )
 
     chart_html = fig.to_html(full_html=False)
@@ -62,17 +64,15 @@ def measurement():
 
         for key, value in items:
             if value == '':
-                flash('Please fill in all the fields!')
+                flash('Please fill in all the fields!', 'warning')
                 return redirect('/measurement')
-
             try:
                 value = float(value)
                 if value < 0:
-                    flash('Measurements cannot be negative!')
+                    flash('Measurements cannot be negative!', 'warning')
                     return redirect('/measurement')
-            
             except ValueError:
-                flash('Please enter valid values!')
+                flash('Please enter valid values!', 'warning')
                 return redirect('/measurement')
 
          # Create a new Measurement instance and add it to the database
@@ -88,7 +88,7 @@ def measurement():
         db.session.add(measurements)
         db.session.commit()
 
-        flash('Measurements saved successfully!')
+        flash('Measurements saved successfully!', 'success')
         return redirect('/measurement')
     else:
         return render_template("measurement.html", user=current_user)

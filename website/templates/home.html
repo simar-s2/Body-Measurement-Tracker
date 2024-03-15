@@ -7,7 +7,7 @@
     <h1 class="text-center">Welcome!</h1>
     
     <!-- Data selection dropdown menu -->
-    <form action="/" method="GET" class="">
+    <form action="/" method="GET">
         <div class="mb-3">
             <label for="data-selection" class="form-label">Select Trend:</label>
             <select id="data-selection" name="data" class="form-select">
@@ -19,7 +19,7 @@
                 <option value="leg" {% if 'leg' == selected_data %} selected {% endif %}>Leg</option>
             </select>
         </div>
-            <input type="submit" value="Submit" class="btn btn-dark mt-2">
+            <input type="submit" value="Submit" class="btn btn-primary">
     </form>
     
     <!-- Render the chart within a div -->

@@ -7,26 +7,24 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     column-gap: 2rem;
-    row-gap: 0.5rem;
+    row-gap: 0.2rem;
 }
 
 #submit_measurements{
     grid-column-start: 1;
     grid-column-end: -1;
-    width: 40%;
     justify-self: center;
-    margin: 0.5rem;
 }
 
-.link-dark {
+.link-primary {
     text-decoration: none;
 }
 
-.link-dark:hover {
+.link-primary:hover {
     text-decoration: underline;
 }
 
-/* body {
+body {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: hsl(0, 0%, 97%);
     color: #333;
@@ -36,20 +34,9 @@ h1, h2 {
     color: #222;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-} */
-
-canvas {
+#chart {
     display: block;
     margin: 20px auto;
-    max-width: 800px;
-    max-height: 400px;
+    max-width: 80%;
+    max-height: 100%;
 }

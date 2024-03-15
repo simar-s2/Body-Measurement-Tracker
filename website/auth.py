@@ -41,18 +41,19 @@ def login():
         password = request.form.get("password")
 
         if not email or not password:
-            flash('Please fill in all the fields')
+            flash('Please fill in all the fields!', 'warning')
+            return redirect('/login')
 
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!')
+                flash('Logged in successfully!', 'success')
                 login_user(user, remember=True)
                 return redirect('/')
             else:
-                flash('Incorrect password, try again')
+                flash('Incorrect password, try again!')
         else:
-            flash('Account does not exist')
+            flash('Account does not exist!')
 
         return redirect('/login')
     else:
@@ -66,15 +67,18 @@ def sign_up():
         confirm = request.form.get("confirm")
         
         if not email or not password or not confirm:
-            flash('Please fill in all the fields')
+            flash('Please fill in all the fields!', 'warning')
+            return redirect('/sign-up')
         elif not validate_password(password):
-            flash('Please enter a valid password')
+            flash('Please enter a valid password!', 'warning')
+            return redirect('/sign-up')
         elif password != confirm:
-            flash('Passwords do not match')
+            flash('Passwords do not match!', 'warning')
+            return redirect('/sign-up')
 
         user = User.query.filter_by(email=email).first()
         if user:
-            flash('User already exists')
+            flash('User already exists!')
             return redirect('/sign-up')
 
         new_user = User(email=email, password=generate_password_hash(password))
@@ -82,7 +86,7 @@ def sign_up():
         db.session.commit()
 
         login_user(new_user, remember=True)
-        flash('Account Created!')
+        flash('Account Created!', 'success')
         return redirect('/')
     else:
         return render_template('sign-up.html', user=current_user)
@@ -91,5 +95,5 @@ def sign_up():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out Successfully!')
+    flash('Logged out Successfully!', 'success')
     return redirect('/login')
