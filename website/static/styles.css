@@ -2,7 +2,7 @@
     font-size: 1.2rem;
 }
 
-.measurements {
+.measurements_form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -10,7 +10,7 @@
     row-gap: 0.2rem;
 }
 
-#submit_measurements{
+.submit_measurements{
     grid-column-start: 1;
     grid-column-end: -1;
     justify-self: center;

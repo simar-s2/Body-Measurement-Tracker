@@ -3,16 +3,12 @@
 {% block title %}Update Entry {{ measurement_id }}{% endblock %}
 
 {% block content %} 
+
+<link rel="stylesheet" href="/static/styles.css">
+
 <h2>Update measurement {{ measurement_id }}</h2>
-<div>
-  <h2>Notes</h2>
-  <ul>
-    <li>All body measurements should be in inches</li>
-    <li>Only one side of the body should be measured for all the measurements</li>
-  </ul>
-</div>
 <br>
-<form method="post" class="measurements" name="measurements">
+<form method="post" class="measurements_form">
     <div class="mb-3">
       <label for="weight" class="form-label">Weight</label>
       <input type="text" class="form-control" id="email" aria-describedby="weightHelp" name="weight">
@@ -41,7 +37,7 @@
       <div id="legHelp" class="form-text">Measure half way up the thigh</div>
     </div>
     <div class="mb-3">
-      <button type="submit" id="submit_measurements" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary submit_measurements">Submit</button>
     </div>
 </form>
 
