@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, flash
+from flask import Blueprint, render_template, request, redirect, flash, url_for
 import plotly.graph_objects as go
 import pandas as pd
 from flask_login import login_required, current_user
@@ -92,4 +92,18 @@ def measurement():
         return redirect('/measurement')
     else:
         return render_template("measurement.html", user=current_user)
+
+@views.route('/delete_entry/<int:measurement_id>', methods=["POST"])
+def delete_entry(measurement_id):
+    measurement = Measurement.query.get_or_404(measurement_id)
+    db.session.delete(measurement)
+    db.session.commit()
+    flash('Entry deleted successfully!', 'success')
+    return redirect('/history')
     
+@views.route('/history')
+@login_required
+def history():
+    measurements = Measurement.query.filter_by(user_id=current_user.id).all()
+    return render_template('history.html', user=current_user, measurements=measurements)
+

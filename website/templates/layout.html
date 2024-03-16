@@ -20,6 +20,9 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/history">History</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/measurement">Measurements</a>
                     </li>
                     <li class="nav-item">
@@ -53,20 +56,20 @@
             </svg>
             {% for category, message in messages %}
                 {% if category == 'success' %}
-                <div class="alert alert-success d-flex alert-dismissible fade show" role="alert">
-                    <svg class="bi flex-shrink-2 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <svg class="bi flex-shrink-2 me-2" width="1.5em" height="1.5em" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% elif category == 'warning' %}
-                <div class="alert alert-warning d-flex alert-dismissible fade show" role="alert">
-                    <svg class="bi flex-shrink-2 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <svg class="bi flex-shrink-2 me-2" width="1.5em" height="1.5em" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% else %}
                 <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-                    <svg role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <svg role="img" class="bi flex-shrink-2 me-2" width="1.5em" height="1.5em" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
