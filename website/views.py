@@ -100,6 +100,40 @@ def delete_entry(measurement_id):
     db.session.commit()
     flash('Entry deleted successfully!', 'success')
     return redirect('/history')
+
+@views.route('/update_entry/<int:measurement_id>', methods=['GET', 'POST'])
+def update_entry(measurement_id):
+    if request.method == "POST":
+        measurements = Measurement.query.get_or_404(measurement_id)
+        items = request.form.items()
+
+        for key, value in items:
+            if value == '':
+                flash('Please fill in all the fields!', 'warning')
+                return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+            try:
+                value = float(value)
+                if value < 0:
+                    flash('Measurements cannot be negative!', 'warning')
+                    return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+            except ValueError:
+                flash('Please enter valid values!', 'warning')
+                return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+
+         # Update measurements
+        measurements.weight = request.form['weight']
+        measurements.shoulder = request.form['shoulder']
+        measurements.chest = request.form['chest']
+        measurements.arm = request.form['arm']
+        measurements.waist = request.form['waist']
+        measurements.leg = request.form['leg']
+        
+        db.session.commit()
+
+        flash('Measurements updated successfully!', 'success')
+        return redirect('/history')
+    else:
+        return render_template('update_entry.html', measurement_id=measurement_id, user=current_user)
     
 @views.route('/history')
 @login_required

@@ -29,7 +29,7 @@
               <td>{{ measurement.arm }}</td>
               <td>{{ measurement.waist }}</td>
               <td>{{ measurement.leg }}</td>
-              <td><a href="/delete_entry/{{ measurement.id }}" class="link-primary">Update</a></td>
+              <td><a href="/update_entry/{{ measurement.id }}" class="link-primary">Update</a></td>
               <td><form method="post" action="{{ url_for('views.delete_entry', measurement_id=measurement.id) }}" onsubmit="return confirm('Are you sure you want to delete this entry?');">
                 <button class="btn btn-danger" type="submit">Delete</button>
             </form>
