@@ -1,7 +1,59 @@
-.nav-item {
-    font-size: 1.2rem;
+/* Global page */
+body {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: hsl(0, 0%, 97%);
+    color: #333;
 }
 
+h1, h2 {
+    color: #222;
+}
+
+.btn {
+    background-color: rgba(0,212,255,0.3);
+}
+
+svg {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.link {
+    color: #222;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Navbar  */
+.navbar {
+    background-color: rgba(0,212,255,0.6);
+}
+
+.nav-item {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.nav_image {
+    width: 2em;
+    height: 2em;
+}
+
+/* Login and Sign up page */
+
+/* Home page */
+#chart {
+    display: block;
+    margin: 1rem auto;
+    max-width: 80%;
+    max-height: 100%;
+}
+
+/* Measurements and update measurements page */
 .measurements_form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -16,27 +68,10 @@
     justify-self: center;
 }
 
-.link-primary {
-    text-decoration: none;
+/* History page */
+tbody>tr:nth-child(odd) {
+    background-color: rgba(0,212,255,0.3);
 }
 
-.link-primary:hover {
-    text-decoration: underline;
-}
+/* Settings page */
 
-body {
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: hsl(0, 0%, 97%);
-    color: #333;
-}
-
-h1, h2 {
-    color: #222;
-}
-
-#chart {
-    display: block;
-    margin: 1rem auto;
-    max-width: 80%;
-    max-height: 100%;
-}

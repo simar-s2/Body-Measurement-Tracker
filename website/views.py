@@ -32,7 +32,7 @@ def home():
     layout = go.Layout(title=title, xaxis=dict(title='Date'), yaxis=dict(title=y_label))
     fig = go.Figure(data=[trace], layout=layout)
 
-    fig.update_layout(plot_bgcolor='#B9D9EB', paper_bgcolor='rgba(0,0,0,0)')
+    fig.update_layout(plot_bgcolor='rgba(0,212,255,0.2)', paper_bgcolor='rgba(0,0,0,0)')
     fig.update_traces(line_color='#f3172d', line={'width': 1.5})
 
     fig.update_xaxes(
@@ -110,15 +110,15 @@ def update_entry(measurement_id):
         for key, value in items:
             if value == '':
                 flash('Please fill in all the fields!', 'warning')
-                return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+                return render_template('update_entry.html', user=current_user)
             try:
                 value = float(value)
                 if value < 0:
                     flash('Measurements cannot be negative!', 'warning')
-                    return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+                    return render_template('update_entry.html', user=current_user)
             except ValueError:
                 flash('Please enter valid values!', 'warning')
-                return render_template('update_entry.html', user=current_user, measurement_id=measurement_id)
+                return render_template('update_entry.html', user=current_user)
 
          # Update measurements
         measurements.weight = request.form['weight']
@@ -133,7 +133,7 @@ def update_entry(measurement_id):
         flash('Measurements updated successfully!', 'success')
         return redirect('/history')
     else:
-        return render_template('update_entry.html', measurement_id=measurement_id, user=current_user)
+        return render_template('update_entry.html', user=current_user)
     
 @views.route('/history')
 @login_required
