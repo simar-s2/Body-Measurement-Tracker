@@ -1,54 +1,72 @@
+:root {
+    --main_color: rgb(11, 175, 220);
+    --secondary_color: rgba(11, 175, 220, 0.3);
+    --text_color: #333;
+    --white: #fff;
+    --black: #000;
+}
+
 /* Global page */
 body {
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: hsl(0, 0%, 97%);
-    color: #333;
+    font-family: 'Verdana', sans-serif;
+    background-color: whitesmoke;
+    color: var(--text_color);
 }
 
 h1, h2 {
-    color: #222;
+    color: var(--text_color);
 }
 
-.btn {
-    background-color: rgba(0,212,255,0.3);
+.btn-submit {
+    background-color: var(--main_color);
+    color: var(--white);
 }
 
-svg {
-    height: 1.5em;
-    width: 1.5em;
+.btn-submit:hover {
+    background-color: var(--main_color);
+    color: var(--text_color);
+}
+
+.alert-icon {
+    height: 1.2em;
+    width: 1.2em;
 }
 
 .link {
-    color: #222;
+    color: var(--text_color);
     text-decoration: none;
 }
 
 .link:hover {
     text-decoration: underline;
-    color: black;
+    color: var(--black);
 }
 
 /* Navbar  */
 .navbar {
-    background-color: rgba(0,212,255,0.6);
+    background-color: var(--main_color);
 }
 
-.nav-item {
+.nav-link {
     font-size: 1.2rem;
-    color: black;
+    color: var(--white);
+}
+
+.nav-link:hover {
+    color: var(--text_color);
 }
 
 .nav_image {
-    width: 2em;
-    height: 2em;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.2rem;
+    margin-right: 0;
 }
-
-/* Login and Sign up page */
 
 /* Home page */
 #chart {
     display: block;
-    margin: 1rem auto;
+    margin: 1em auto;
     max-width: 80%;
     max-height: 100%;
 }
@@ -58,8 +76,8 @@ svg {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 0.2rem;
+    column-gap: 2em;
+    row-gap: 0.2em;
 }
 
 .submit_measurements{
@@ -69,9 +87,8 @@ svg {
 }
 
 /* History page */
-tbody>tr:nth-child(odd) {
-    background-color: rgba(0,212,255,0.3);
+.tbody-row:nth-child(odd) {
+    background-color: var(--secondary_color);
 }
 
 /* Settings page */
-
