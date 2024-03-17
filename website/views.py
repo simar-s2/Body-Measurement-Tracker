@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 import plotly.graph_objects as go
-import pandas as pd
 from flask_login import login_required, current_user
 from . import db
 from .models import Measurement
